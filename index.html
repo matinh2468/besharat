@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="utf-8">
+    <title>فروشگاه عسل بشارت (هیر)</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazir-font@v33.0.3/Vazirmatn.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <style>
+        :root {
+            --red: #ef394e;
+            --gold: #ffcc00;
+            --bg: #fcfaf5;
+            --dark: #1a1a1a;
+            --green: #2ecc71;
+        }
+        * { box-sizing: border-box; font-family: Vazirmatn, sans-serif; }
+        body { margin: 0; background: var(--bg); font-size: 18px; padding-bottom: 120px; overflow-x: hidden; scroll-behavior: smooth; }
+
+        /* HEADER */
+        header { position: sticky; top: 0; z-index: 500; background: #fff; padding: 10px 20px; border-bottom: 5px solid var(--red); box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
+        .header-box { display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: auto; }
+        .brand { display: flex; align-items: center; gap: 12px; }
+        .brand img { width: 55px; height: 55px; border-radius: 15px; border: 2px solid var(--red); object-fit: cover; }
+        .top-nav { display: flex; gap: 20px; }
+        .top-nav a { text-decoration: none; color: var(--dark); font-weight: bold; font-size: 15px; transition: 0.3s; }
+        .top-nav a:hover { color: var(--red); }
+        #cart-count { background: var(--red); color: #fff; border-radius: 50%; padding: 2px 8px; font-size: 14px; margin-right: 6px; }
+
+        /* HERO */
+        .hero { height: 60vh; background: linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)), url('AKS99.jpg') center/cover no-repeat; display: flex; align-items: center; justify-content: center; text-align: center; color: #fff; border-bottom: 10px solid var(--gold); }
+        .hero h2 { font-size: 40px; margin-bottom: 15px; text-shadow: 0 4px 10px rgba(0,0,0,0.3); }
+
+        /* GALLERY SECTION */
+        .gallery-container { margin-bottom: 40px; }
+        .gallery-title { color: var(--dark); margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
+        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 15px; }
+        .gallery-item { border-radius: 20px; overflow: hidden; height: 200px; border: 3px solid #fff; box-shadow: 0 5px 15px rgba(0,0,0,0.1); transition: 0.4s; }
+        .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
+        .gallery-item:hover { transform: translateY(-5px); border-color: var(--gold); }
+        .gallery-item:hover img { transform: scale(1.1); }
+
+        /* TOAST NOTIFICATION */
+        #toast { visibility: hidden; min-width: 280px; background-color: var(--dark); color: #fff; text-align: center; border-radius: 20px; padding: 16px; position: fixed; z-index: 6000; left: 50%; bottom: 100px; transform: translateX(-50%); font-size: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.3); border-bottom: 4px solid var(--green); }
+        #toast.show { visibility: visible; animation: fadeInUp 0.5s, fadeOutDown 0.5s 2.5s; }
+        @keyframes fadeInUp { from { bottom: 0; opacity: 0; } to { bottom: 100px; opacity: 1; } }
+        @keyframes fadeOutDown { from { bottom: 100px; opacity: 1; } to { bottom: 0; opacity: 0; } }
+
+        /* SECTIONS & PRODUCTS */
+        .info-container { max-width: 1100px; margin: 60px auto; padding: 0 20px; }
+        .info-row { display: flex; align-items: center; gap: 40px; margin-bottom: 80px; flex-wrap: wrap; }
+        .info-row.reverse { flex-direction: row-reverse; }
+        .info-img img { width: 100%; border-radius: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); border: 4px solid #fff; }
+        .section { margin: 20px; background: var(--red); border-radius: 40px; padding: 40px 30px; color: #fff; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 25px; }
+        .card { background: #fff; color: #000; border-radius: 30px; padding: 20px; text-align: center; transition: 0.3s; }
+        .card img { width: 100%; height: 180px; object-fit: contain; }
+        .price { font-weight: 900; font-size: 22px; margin: 12px 0; color: var(--red); }
+
+        /* FOOTER */
+        .main-footer { background: var(--dark); color: #fff; padding: 80px 20px 140px; border-top: 8px solid var(--gold); border-radius: 80px 80px 0 0; }
+        .footer-container { max-width: 1200px; margin: auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; }
+        .footer-box h4 { color: var(--gold); font-size: 1.4rem; margin-bottom: 20px; position: relative; padding-bottom: 10px; }
+        .footer-box h4::after { content: ''; position: absolute; right: 0; bottom: 0; width: 40px; height: 3px; background: var(--red); }
+        .footer-box p, .footer-box li { font-size: 15px; line-height: 2; opacity: 0.8; }
+        .footer-box ul { list-style: none; padding: 0; }
+        .footer-box ul li a { color: #fff; text-decoration: none; transition: 0.3s; }
+        .footer-box ul li a:hover { color: var(--red); padding-right: 5px; }
+        .footer-logo-big { text-align: center; }
+        .footer-logo-big img { width: 180px; border-radius: 30px; border: 3px solid #333; filter: drop-shadow(0 0 15px rgba(255,204,0,0.2)); }
+        .social-links { display: flex; gap: 15px; margin-top: 20px; }
+        .social-links a { width: 45px; height: 45px; background: #333; display: flex; align-items: center; justify-content: center; border-radius: 12px; color: #fff; text-decoration: none; font-size: 22px; transition: 0.3s; }
+        .social-links a:hover { background: var(--red); transform: translateY(-5px); }
+
+        /* MODALS */
+        .modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,.85); z-index: 5000; align-items: center; justify-content: center; padding: 15px; }
+        .modal-content { background: #fff; border-radius: 35px; padding: 30px; width: 100%; max-width: 500px; color: #333; position: relative; }
+        .cart-item { display: flex; justify-content: space-between; align-items: center; background: #f9f9f9; padding: 12px; border-radius: 15px; margin-bottom: 10px; }
+        .remove-btn { color: var(--red); cursor: pointer; border: none; background: none; font-size: 18px; }
+        .btn { background: var(--red); color: #fff; border: none; width: 100%; padding: 15px; border-radius: 20px; font-size: 18px; font-weight: 800; cursor: pointer; transition: 0.2s; }
+        input, textarea { width: 100%; padding: 15px; border-radius: 18px; border: 2px solid #eee; margin-bottom: 12px; outline: none; }
+
+        /* PC ORDER BOX (NEW) */
+        .pc-order-box { text-align: center; background: #fff7e6; padding: 15px; border-radius: 20px; border: 2px dashed var(--gold); margin-top: 10px; }
+
+        /* BOTTOM NAV */
+        nav.bottom-nav { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); width: 92%; max-width: 450px; background: rgba(255,255,255,0.95); display: flex; justify-content: space-around; padding: 12px; border-radius: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); z-index: 4000; border: 1px solid var(--red); }
+        nav.bottom-nav div { display: flex; flex-direction: column; align-items: center; font-size: 12px; cursor: pointer; color: var(--dark); opacity: 0.5; }
+        nav.bottom-nav div.active { opacity: 1; color: var(--red); font-weight: bold; }
+    </style>
+</head>
+<body>
+
+    <div id="toast">محصول اضافه شد ✅</div>
+
+    <header>
+        <div class="header-box">
+            <div class="brand">
+                <img src="لوگو.png" onerror="this.src='https://cdn-icons-png.flaticon.com/512/517/517563.png'">
+                <h1>عسل بشارت</h1>
+            </div>
+            <div class="top-nav">
+                <a href="#home-page">خانه</a>
+                <a href="#products-section">محصولات</a>
+                <a href="شروع_2.html">ارتباط با ما</a>
+                <a href="شروع_2_2.html"> محصولات عمده </a>
+            </div>
+            <div onclick="openCart()" style="cursor:pointer">
+                <i class="fas fa-shopping-basket fa-lg"></i>
+                <span id="cart-count">۰</span>
+            </div>
+        </div>
+    </header>
+
+    <main id="home-page">
+        <div class="hero">
+            <div data-aos="zoom-in">
+                <h2>شهد پاک کوهستان هیر</h2>
+                <p>ارگانیک، طبیعی و مستقیم از زنبورستان بشارت</p>
+            </div>
+        </div>
+
+        <div class="info-container">
+            <div class="info-row" data-aos="fade-left">
+                <div style="flex:1">
+                    <h2 style="color:var(--red)">عسل کاملاً طبیعی هیر</h2>
+                    <p style="line-height:2">منطقه هیر اردبیل به دلیل پوشش گیاهی غنی، یکی از بهترین مناطق برای تولید عسل در ایران است. ما اصالت و کیفیت محصولاتمان را تضمین می‌کنیم.</p>
+                </div>
+                <div style="flex:1"><img src="STOAKS/ho2.jpg" style="width:100%; border-radius:30px; border:4px solid #fff;"></div>
+            </div>
+
+            <div class="gallery-container" data-aos="fade-up">
+                <h3 class="gallery-title"><i class="fas fa-camera-retro" style="color:var(--gold)"></i> تصاویر زنبورستان و فروشگاه</h3>
+                <div class="gallery-grid">
+                    <div class="gallery-item"><img src="STOAKS/AKS20.jpg" onerror="this.src='https://picsum.photos/400/300?random=1'"></div>
+                    <div class="gallery-item"><img src="STOAKS/AKS22.jpg" onerror="this.src='https://picsum.photos/400/300?random=2'"></div>
+                    <div class="gallery-item"><img src="STOAKS/AKS24.jpg" onerror="this.src='https://picsum.photos/400/300?random=3'"></div>
+                    <div class="gallery-item"><img src="STOAKS/AKS23.jpg" onerror="this.src='https://picsum.photos/400/300?random=4'"></div>
+                </div>
+            </div>
+
+            <div id="products-section" class="section">
+                <h3><i class="fas fa-store"></i> ویترین فروشگاه</h3>
+                <div id="products" class="grid"></div>
+            </div>
+
+            <div class="info-row reverse" data-aos="fade-right">
+                <div style="flex:1">
+                    <h2 style="color:var(--red)">تضمین بازگشت وجه</h2>
+                    <p style="line-height:2">در صورت عدم رضایت از کیفیت عسل یا عدم مطابقت با برگه آزمایش، ما با کمال میل تمام وجه شما را مسترد خواهیم کرد.</p>
+                </div>
+                <div style="flex:1"><img src="STOAKS/ho1.jpg" style="width:100%; border-radius:30px; border:4px solid #fff;"></div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <div class="footer-container">
+            <div class="footer-box" data-aos="fade-up">
+                <h4>عسل بشارت هیر</h4>
+                <p>تولیدکننده تخصصی عسل طبیعی، ژل رویال و گرده گل. ما از سال ۱۳۸۰ در کنار شما هستیم.</p>
+                <div class="social-links">
+                    <a href="https://t.me/+PW6YuUmeoAcwZDg0"><i class="fab fa-telegram-plane"></i></a>
+                    <a href="https://rubika.ir/besharathoney"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Rubika_logo.svg/1024px-Rubika_logo.svg.png" style="width:22px"></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            <div class="footer-box" data-aos="fade-up" data-aos-delay="100">
+                <h4>اطلاعات تماس</h4>
+                <ul>
+                    <li>مدیریت: ۰۹۱۴۴۵۴۹۱۷۲</li>
+                    <li>اردبیل، شهر هیر، فروشگاه بشارت</li>
+                </ul>
+            </div>
+            <div class="footer-logo-big" data-aos="fade-left">
+                <img src="لوگو.png" onerror="this.src='https://cdn-icons-png.flaticon.com/512/517/517563.png'">
+            </div>
+        </div>
+    </footer>
+
+    <div id="cartModal" class="modal">
+        <div class="modal-content">
+            <h2 style="text-align:center">🛒 سبد خرید</h2>
+            <div id="cartList" style="max-height:300px; overflow-y:auto; margin:20px 0"></div>
+            <div style="display:flex; justify-content:space-between">
+                <b>جمع کل:</b> <b id="totalPrice" style="color:var(--red)">۰ تومان</b>
+            </div>
+            <button class="btn" style="margin-top:20px" onclick="openCheckout()">ثبت نهایی</button>
+            <button onclick="closeModals()" style="width:100%; border:none; background:none; margin-top:15px; color:#999; cursor:pointer">بستن</button>
+        </div>
+    </div>
+
+    <div id="checkoutModal" class="modal">
+        <div class="modal-content">
+            <h3>📍 اطلاعات ارسال</h3>
+            <input type="text" id="uName" placeholder="نام و نام خانوادگی">
+            <input type="tel" id="uPhone" placeholder="شماره تماس">
+            <textarea id="uAddr" rows="3" placeholder="آدرس دقیق گیرنده"></textarea>
+            <button class="btn" onclick="finishOrder()">ارسال سفارش</button>
+            <button onclick="closeModals()" style="width:100%; border:none; background:none; margin-top:10px; color:#999; cursor:pointer">بازگشت</button>
+        </div>
+    </div>
+
+    <div id="pcAlertModal" class="modal">
+        <div class="modal-content" style="text-align:center">
+            <i class="fas fa-desktop fa-3x" style="color:var(--red); margin-bottom:15px"></i>
+            <h3>ارسال پیامک از کامپیوتر</h3>
+            <p style="font-size:16px; line-height:1.6">شما با کامپیوتر وارد شده‌اید. لطفاً این متن را کپی کرده و به شماره زیر پیامک یا روبیکا بفرستید:</p>
+            <div class="pc-order-box">
+                <strong style="color:var(--red)">۰۹۱۴۴۵۴۹۱۷۲</strong>
+            </div>
+            <textarea id="finalOrderText" style="height:120px; font-size:14px; margin-top:10px; background:#f0f0f0" readonly></textarea>
+            <button class="btn" onclick="copyOrderText()">کپی متن سفارش</button>
+            <button onclick="closeModals()" style="width:100%; border:none; background:none; margin-top:15px; color:#999; cursor:pointer">بستن</button>
+        </div>
+    </div>
+
+    <nav class="bottom-nav">
+        <div class="active" onclick="window.scrollTo(0,0)"><i class="fas fa-home"></i><span>خانه</span></div>
+        <div onclick="openCart()"><i class="fas fa-shopping-basket"></i><span>سبد خرید</span></div>
+        <div onclick="document.getElementById('products-section').scrollIntoView()"><i class="fas fa-store"></i><span>محصولات</span></div>
+    </nav>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 1000, once: true });
+
+        const products = [
+            { id: 1, name: "عسل طبیعی ۵۰۰ گرم", price: 390000, img: "mahsolat/asaltabi.jpg" },
+            { id: 2, name: "شهد خالص ۱۰۰۰ گرم", price: 890000, img: "mahsolat/ckales.jpg" },
+            { id: 3, name: "ژله رویال ۱۰ گرمی", price: 250000, img: "mahsolat/AL.jpg" },
+            { id: 4, name: "گرده گل نیم کیلو", price: 500000, img: "mahsolat/garde.jpg" },
+            { id: 5, name: "گرده گل ۱ کیلویی", price: 1000000, img: "mahsolat/garde.jpg" },
+            { id: 6, name: "عسل معمولی موم‌دار", price: 300000, img: "mahsolat/asalmamolimom.jpg" },
+            { id: 7, name: "شهد معمولی", price: 300000, img: "mahsolat/shahdmamoli.jpg" }
+        ];
+
+        let cart = JSON.parse(localStorage.getItem('B_CART')) || [];
+
+        function showToast(message) {
+            const x = document.getElementById("toast");
+            x.innerText = message; x.className = "show";
+            setTimeout(() => { x.className = x.className.replace("show", ""); }, 3000);
+        }
+
+        function renderProducts() {
+            const grid = document.getElementById('products');
+            grid.innerHTML = products.map(p => `
+                <div class="card" data-aos="fade-up">
+                    <img src="${p.img}" onerror="this.src='https://via.placeholder.com/200?text=Honey'">
+                    <h4>${p.name}</h4>
+                    <div class="price">${p.price.toLocaleString('fa-IR')} تومان</div>
+                    <button class="btn" onclick="addToCart(${p.id})">افزودن به سبد</button>
+                </div>`).join('');
+            updateBadge();
+        }
+
+        function addToCart(id) {
+            const p = products.find(x => x.id === id);
+            const item = cart.find(x => x.id === id);
+            item ? item.qty++ : cart.push({ ...p, qty: 1 });
+            updateBadge();
+            showToast(p.name + " به سبد اضافه شد 🛒");
+        }
+
+        function removeFromCart(id) {
+            cart = cart.filter(item => item.id !== id);
+            updateBadge(); openCart();
+            showToast("کالا حذف شد 🗑️");
+        }
+
+        function updateBadge() {
+            localStorage.setItem('B_CART', JSON.stringify(cart));
+            document.getElementById('cart-count').innerText = cart.reduce((a, b) => a + b.qty, 0).toLocaleString('fa-IR');
+        }
+
+        function openCart() {
+            const list = document.getElementById('cartList');
+            let total = 0;
+            list.innerHTML = cart.length > 0 ? cart.map(i => {
+                total += (i.price * i.qty);
+                return `<div class="cart-item">
+                    <span>${i.name}</span>
+                    <div>
+                        <b>${(i.price * i.qty).toLocaleString('fa-IR')}</b>
+                        <button class="remove-btn" onclick="removeFromCart(${i.id})"><i class="fas fa-trash-alt"></i></button>
+                    </div>
+                </div>`;
+            }).join('') : '<p style="text-align:center">سبد خرید شما فعلاً خالی است</p>';
+            document.getElementById('totalPrice').innerText = total.toLocaleString('fa-IR') + ' تومان';
+            document.getElementById('cartModal').style.display = 'flex';
+        }
+
+        function closeModals() { document.querySelectorAll('.modal').forEach(m => m.style.display = 'none'); }
+        
+        function openCheckout() {
+            if (cart.length === 0) return showToast("سبد خالی است! ❌");
+            closeModals();
+            document.getElementById('checkoutModal').style.display = 'flex';
+        }
+
+        function finishOrder() {
+            const name = document.getElementById('uName').value;
+            const phone = document.getElementById('uPhone').value;
+            const addr = document.getElementById('uAddr').value;
+            if (!name || !phone || !addr) return alert("لطفا تمام فیلدها را پر کنید");
+
+            let txt = `سفارش جدید عسل بشارت:\n`;
+            cart.forEach(i => txt += `- ${i.name} (${i.qty})\n`);
+            txt += `----\nمشتری: ${name}\nتماس: ${phone}\nآدرس: ${addr}`;
+
+            const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+
+            if (isMobile) {
+                window.location.href = `sms:09144549172?body=${encodeURIComponent(txt)}`;
+            } else {
+                closeModals();
+                document.getElementById('finalOrderText').value = txt;
+                document.getElementById('pcAlertModal').style.display = 'flex';
+            }
+        }
+
+        function copyOrderText() {
+            const copyText = document.getElementById("finalOrderText");
+            copyText.select();
+            document.execCommand("copy");
+            showToast("متن کپی شد ✅");
+        }
+
+        renderProducts();
+    </script>
+</body>
+</html>

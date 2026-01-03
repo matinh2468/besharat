@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="utf-8">
+    <title>پنل فروش عمده عسل بشارت</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazir-font@v33.0.3/Vazirmatn.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <style>
+        :root {
+            --red: #ef394e;
+            --gold: #ffcc00;
+            --bg: #fcfaf5;
+            --dark: #1a1a1a;
+            --green: #2ecc71;
+        }
+        * { box-sizing: border-box; font-family: Vazirmatn, sans-serif; }
+        body { margin: 0; background: var(--bg); font-size: 18px; padding-bottom: 120px; overflow-x: hidden; scroll-behavior: smooth; }
+
+        /* HEADER */
+        header { position: sticky; top: 0; z-index: 500; background: #fff; padding: 10px 20px; border-bottom: 5px solid var(--gold); box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
+        .header-box { display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: auto; }
+        .brand { display: flex; align-items: center; gap: 12px; }
+        .brand img { width: 55px; height: 55px; border-radius: 15px; border: 2px solid var(--red); object-fit: cover; }
+        
+        #cart-count { background: var(--red); color: #fff; border-radius: 50%; padding: 2px 8px; font-size: 14px; margin-right: 6px; }
+
+        /* HERO WHOLESALE */
+        .hero-wholesale { height: 40vh; background: linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7)), url('https://img.freepik.com/free-photo/honeycomb-background-texture-with-copy-space_24972-744.jpg') center/cover; display: flex; align-items: center; justify-content: center; text-align: center; color: #fff; border-bottom: 8px solid var(--red); }
+        .hero-wholesale h2 { font-size: 35px; color: var(--gold); }
+
+        /* WHOLESALE GRID */
+        .wholesale-container { max-width: 1200px; margin: 40px auto; padding: 0 20px; }
+        .section-title { text-align: center; margin-bottom: 40px; color: var(--dark); border-right: 5px solid var(--red); padding-right: 15px; }
+        
+        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 30px; }
+        .wholesale-card { background: #fff; border-radius: 30px; overflow: hidden; box-shadow: 0 10px 20px rgba(0,0,0,0.05); border: 1px solid #eee; transition: 0.3s; position: relative; }
+        .wholesale-card:hover { transform: translateY(-10px); border-color: var(--red); }
+        .wholesale-card img { width: 100%; height: 220px; object-fit: cover; }
+        .wholesale-badge { position: absolute; top: 15px; right: 15px; background: var(--gold); color: #000; padding: 5px 15px; border-radius: 50px; font-weight: bold; font-size: 14px; }
+        .card-body { padding: 20px; text-align: center; }
+        .price-bulk { font-size: 24px; font-weight: 900; color: var(--red); margin: 15px 0; }
+        .min-order { font-size: 13px; color: #777; margin-bottom: 15px; }
+
+        /* SYSTEM STYLES (MATCHING ORIGINAL) */
+        #toast { visibility: hidden; min-width: 280px; background-color: var(--dark); color: #fff; text-align: center; border-radius: 20px; padding: 16px; position: fixed; z-index: 6000; left: 50%; bottom: 100px; transform: translateX(-50%); font-size: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.3); border-bottom: 4px solid var(--green); }
+        #toast.show { visibility: visible; animation: fadeInUp 0.5s, fadeOutDown 0.5s 2.5s; }
+        @keyframes fadeInUp { from { bottom: 0; opacity: 0; } to { bottom: 100px; opacity: 1; } }
+        @keyframes fadeOutDown { from { bottom: 100px; opacity: 1; } to { bottom: 0; opacity: 0; } }
+
+        .modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,.85); z-index: 5000; align-items: center; justify-content: center; padding: 15px; }
+        .modal-content { background: #fff; border-radius: 35px; padding: 30px; width: 100%; max-width: 500px; color: #333; position: relative; }
+        .cart-item { display: flex; justify-content: space-between; align-items: center; background: #f9f9f9; padding: 12px; border-radius: 15px; margin-bottom: 10px; }
+        .btn { background: var(--red); color: #fff; border: none; width: 100%; padding: 15px; border-radius: 20px; font-size: 18px; font-weight: 800; cursor: pointer; transition: 0.2s; }
+        .remove-btn { color: var(--red); cursor: pointer; border: none; background: none; font-size: 18px; }
+        input, textarea { width: 100%; padding: 15px; border-radius: 18px; border: 2px solid #eee; margin-bottom: 12px; outline: none; }
+
+        /* BOTTOM NAV */
+        nav.bottom-nav { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); width: 92%; max-width: 450px; background: #fff; display: flex; justify-content: space-around; padding: 12px; border-radius: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); z-index: 4000; border: 1px solid var(--red); }
+        nav.bottom-nav div { display: flex; flex-direction: column; align-items: center; font-size: 12px; cursor: pointer; color: var(--dark); }
+    </style>
+</head>
+<body>
+
+    <div id="toast">به سبد عمده اضافه شد ✅</div>
+
+    <header>
+        <div class="header-box">
+            <div class="brand">
+                <img src="لوگو.png" onerror="this.src='https://cdn-icons-png.flaticon.com/512/517/517563.png'">
+                <h1>فروش عمده بشارت</h1>
+            </div>
+            <div onclick="openCart()" style="cursor:pointer">
+                <i class="fas fa-truck-loading fa-lg"></i>
+                <span id="cart-count">۰</span>
+            </div>
+        </div>
+    </header>
+
+    <div class="hero-wholesale">
+        <div data-aos="zoom-in">
+            <h2>تأمین مستقیم برای فروشگاه‌ها و عطاری‌ها</h2>
+            <p>ارسال به سراسر کشور با بارنامه معتبر</p>
+        </div>
+    </div>
+
+    <div class="wholesale-container">
+        <h2 class="section-title">لیست قیمت عمده (حلب و فله)</h2>
+        <div id="wholesale-products" class="grid"></div>
+    </div>
+
+    <div id="cartModal" class="modal">
+        <div class="modal-content">
+            <h2 style="text-align:center">🛒 سبد خرید عمده</h2>
+            <div id="cartList" style="max-height:300px; overflow-y:auto; margin:20px 0"></div>
+            <div style="display:flex; justify-content:space-between">
+                <b>جمع کل فاکتور:</b> <b id="totalPrice" style="color:var(--red)">۰ تومان</b>
+            </div>
+            <button class="btn" style="margin-top:20px" onclick="openCheckout()">ثبت نهایی پیش‌فاکتور</button>
+            <button onclick="closeModals()" style="width:100%; border:none; background:none; margin-top:15px; color:#999; cursor:pointer">بستن</button>
+        </div>
+    </div>
+
+    <div id="checkoutModal" class="modal">
+        <div class="modal-content">
+            <h3>📍 مشخصات جهت باربری</h3>
+            <input type="text" id="uName" placeholder="نام فروشگاه یا شخص">
+            <input type="tel" id="uPhone" placeholder="شماره تماس">
+            <textarea id="uAddr" rows="3" placeholder="آدرس دقیق جهت ارسال باربری"></textarea>
+            <button class="btn" onclick="finishOrder()">ارسال لیست خرید</button>
+            <button onclick="closeModals()" style="width:100%; border:none; background:none; margin-top:10px; color:#999; cursor:pointer">بازگشت</button>
+        </div>
+    </div>
+
+    <nav class="bottom-nav">
+        <div onclick="location.href='index.html'"><i class="fas fa-arrow-right"></i><span>بازگشت به سایت اصلی</span></div>
+        <div onclick="openCart()"><i class="fas fa-shopping-basket"></i><span>مشاهده سبد عمده</span></div>
+    </nav>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 1000, once: true });
+
+        // لیست محصولات عمده
+        const wholesaleItems = [
+            { id: 101, name: "حلب ۲۷ کیلویی عسل طبیعی", price: 7500000, img: "#", badge: "پرفروش" },
+            { id: 102, name: "عسل معمولی (حلب ۲۷ کیلویی)", price: 4200000, img: "#", badge: "اقتصادی" },
+            { id: 103, name: "کارتن ۱۰ کیلویی گرده گل", price: 8000000, img: "#", badge: "درجه یک" },
+            { id: 104, name: "ژل رویال (فروش ۱ کیلو به بالا)", price: 18000000, img: "#", badge: "تخصصی" }
+        ];
+
+        let cart = JSON.parse(localStorage.getItem('WHOLESALE_CART')) || [];
+
+        function renderWholesale() {
+            const container = document.getElementById('wholesale-products');
+            container.innerHTML = wholesaleItems.map(p => `
+                <div class="wholesale-card" data-aos="fade-up">
+                    <div class="wholesale-badge">${p.badge}</div>
+                    <img src="${p.img}">
+                    <div class="card-body">
+                        <h4>${p.name}</h4>
+                        <div class="price-bulk">${p.price.toLocaleString('fa-IR')} تومان</div>
+                        <p class="min-order">حداقل سفارش: ۱ عدد/کارتن</p>
+                        <button class="btn" onclick="addToCart(${p.id})">افزودن به فاکتور</button>
+                    </div>
+                </div>
+            `).join('');
+            updateBadge();
+        }
+
+        function addToCart(id) {
+            const p = wholesaleItems.find(x => x.id === id);
+            const item = cart.find(x => x.id === id);
+            item ? item.qty++ : cart.push({ ...p, qty: 1 });
+            updateBadge();
+            showToast(p.name + " اضافه شد");
+        }
+
+        function removeFromCart(id) {
+            cart = cart.filter(item => item.id !== id);
+            updateBadge(); openCart();
+        }
+
+        function updateBadge() {
+            localStorage.setItem('WHOLESALE_CART', JSON.stringify(cart));
+            document.getElementById('cart-count').innerText = cart.reduce((a, b) => a + b.qty, 0).toLocaleString('fa-IR');
+        }
+
+        function openCart() {
+            const list = document.getElementById('cartList');
+            let total = 0;
+            list.innerHTML = cart.length > 0 ? cart.map(i => {
+                total += (i.price * i.qty);
+                return `<div class="cart-item">
+                    <span>${i.name} (${i.qty})</span>
+                    <div>
+                        <b>${(i.price * i.qty).toLocaleString('fa-IR')}</b>
+                        <button class="remove-btn" onclick="removeFromCart(${i.id})"><i class="fas fa-trash"></i></button>
+                    </div>
+                </div>`;
+            }).join('') : '<p style="text-align:center">لیست خرید عمده خالی است</p>';
+            document.getElementById('totalPrice').innerText = total.toLocaleString('fa-IR') + ' تومان';
+            document.getElementById('cartModal').style.display = 'flex';
+        }
+
+        function closeModals() { document.querySelectorAll('.modal').forEach(m => m.style.display = 'none'); }
+        
+        function openCheckout() {
+            if (cart.length === 0) return alert("لیست خالی است");
+            closeModals();
+            document.getElementById('checkoutModal').style.display = 'flex';
+        }
+
+        function finishOrder() {
+            const name = document.getElementById('uName').value;
+            const phone = document.getElementById('uPhone').value;
+            const addr = document.getElementById('uAddr').value;
+            if (!name || !phone || !addr) return alert("لطفا اطلاعات را کامل وارد کنید");
+
+            let txt = `سفارش عمده جدید:\n`;
+            cart.forEach(i => txt += `- ${i.name} (تعداد: ${i.qty})\n`);
+            txt += `----\nمشتری: ${name}\nتماس: ${phone}\nآدرس: ${addr}`;
+
+            window.location.href = `sms:09144549172?body=${encodeURIComponent(txt)}`;
+        }
+
+        function showToast(m) {
+            const x = document.getElementById("toast");
+            x.innerText = m; x.className = "show";
+            setTimeout(() => { x.className = x.className.replace("show", ""); }, 3000);
+        }
+
+        renderWholesale();
+    </script>
+</body>
+</html>

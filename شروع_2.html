@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=0.4">
+    <title>عسل بشارت | ارتباط با ما</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;500;800&display=swap');
+
+        :root {
+            --gold: #ffcc00;
+            --dark-amber: #b38600;
+            --glass: rgba(255, 255, 255, 0.1);
+            --text: #ffffff;
+        }
+
+        body {
+            font-family: 'Vazirmatn', Tahoma, sans-serif;
+            background: linear-gradient(135deg, #1a1a1a 0%, #442c00 100%);
+            color: var(--text);
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+        }
+
+        /* دایره‌های تزئینی پس‌زمینه */
+        .bg-circle {
+            position: fixed;
+            border-radius: 50%;
+            background: var(--gold);
+            filter: blur(80px);
+            opacity: 0.15;
+            z-index: -1;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 50px auto;
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 30px;
+            box-shadow: 0 25px 45px rgba(0,0,0,0.5);
+            position: relative;
+        }
+
+        /* دکمه بازگشت به خانه */
+        .btn-home {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            padding: 10px 20px;
+            background: var(--glass);
+            border: 1px solid var(--gold);
+            color: var(--gold);
+            text-decoration: none;
+            border-radius: 12px;
+            font-size: 0.9rem;
+            transition: 0.3s;
+            backdrop-filter: blur(5px);
+        }
+
+        .btn-home:hover {
+            background: var(--gold);
+            color: #000;
+            box-shadow: 0 0 15px var(--gold);
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin: 0;
+            background: linear-gradient(to right, #fff, var(--gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 800;
+        }
+
+        .about-section {
+            text-align: center;
+            padding: 20px;
+            border-right: 4px solid var(--gold);
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 0 15px 15px 0;
+            margin-bottom: 40px;
+        }
+
+        .contact-card {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin: 40px 0;
+        }
+
+        .info-box {
+            background: rgba(255, 255, 255, 0.08);
+            padding: 20px 40px;
+            border-radius: 20px;
+            text-align: center;
+            transition: 0.4s;
+            border-bottom: 3px solid transparent;
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .info-box:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateY(-10px);
+            border-color: var(--gold);
+        }
+
+        .info-box i {
+            display: block;
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 50px;
+        }
+
+        .media-card {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            height: 250px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .media-card img, .media-card video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: 0.5s;
+        }
+
+        .media-card:hover img {
+            transform: scale(1.1);
+        }
+
+        .phone-link {
+            color: var(--gold);
+            text-decoration: none;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 2rem; }
+            .container { margin: 10px; padding: 20px; margin-top: 60px; }
+            .btn-home { top: -50px; left: 10px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="bg-circle" style="width: 400px; height: 400px; top: -100px; left: -100px;"></div>
+    <div class="bg-circle" style="width: 300px; height: 300px; bottom: -50px; right: -50px; background: #d35400;"></div>
+
+    <div class="container">
+        <a href="index.html" class="btn-home">↩ بازگشت به خانه</a>
+
+        <header>
+            <h1>مجموعه عسل بشارت</h1>
+            <p style="color: #ccc;">کیفیت تضمین شده از منطقه هیر اردبیل</p>
+        </header>
+
+        <section class="about-section">
+            <h2 style="color: var(--gold);">درباره ما</h2>
+            <p style="font-size: 1.1rem; line-height: 2;">
+                مجموعه عسل بشارت با بیش از چندین سال سابقه در تولید عسل کاملاً طبیعی در منطقه خوش آب و هوای 
+                <span style="color: var(--gold); font-weight: bold;">هیر اردبیل</span>، کیفیت را تضمین می‌کند.
+            </p>
+        </section>
+
+        <div class="contact-card">
+            <div class="info-box">
+                <i>📍</i>
+                <h3>آدرس</h3>
+                <p>اردبیل، هیر، جنب اداره پست قدیم</p>
+            </div>
+            <div class="info-box">
+                <i>📞</i>
+                <h3>تماس با ما</h3>
+                <a href="tel:09144549172" class="phone-link">09144549172</a>
+            </div>
+        </div>
+
+        <h2 style="text-align: center; color: var(--gold); margin-top: 60px;">گالری تصاویر</h2>
+        <div class="gallery-grid">
+            <div class="media-card">
+                <img src="aksss1.jpg" alt="عکس شماره 1">
+            </div>
+            <div class="media-card">
+                <img src="aksss2.jpg" alt="عکس شماره 2">
+            </div>
+            <div class="media-card">
+                <video controls>
+                    <source src="video.mp4" type="video/mp4">
+                    مرورگر شما از ویدیو پشتیبانی نمی‌کند.
+                </video>
+            </div>
+        </div>
+
+        <footer style="text-align: center; margin-top: 60px; opacity: 0.5; font-size: 0.8rem;">
+            عسل بشارت - هیر اردبیل
+        </footer>
+    </div>
+
+</body>
+</html>
