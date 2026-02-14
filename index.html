@@ -497,7 +497,7 @@ color:#000;
             <input type="text" id="uName" placeholder="نام و نام خانوادگی">
             <input type="tel" id="uPhone" placeholder="شماره تماس">
             <textarea id="uAddr" rows="3" placeholder="آدرس دقیق گیرنده"></textarea>
-            <button class="btn" onclick="finishOrder()">ارسال سفارش</button>
+            <button class="btn" onclick="finishOrder()">ارسال سفارش به مدیریت</button>
             <button onclick="closeModals()" style="width:100%; border:none; background:none; margin-top:10px; color:#999; cursor:pointer">بازگشت</button>
         </div>
     </div>
@@ -535,14 +535,7 @@ color:#000;
     { id: 6, name: "عسل معمولی موم‌دار", price: 300000, img: "mahsolat/asalmamolimom.jpg" },
     { id: 7, name: "شهد معمولی", price: 300000, img: "mahsolat/shahdmamoli.jpg" },
 
-    // محصولات جدید 👇
-    { id: 8, name: "عسل کوهستان هیر ۱ کیلویی ویژه", price: 1200000, img: "mahsolat/kohestan.jpg" },
-    { id: 9, name: "عسل آویشن طبیعی", price: 950000, img: "mahsolat/avishan.jpg" },
-    { id: 10, name: "موم عسل طبیعی ۵۰۰ گرم", price: 280000, img: "mahsolat/mom.jpg" },
-    { id: 11, name: "بره موم خالص ۳۰ گرمی", price: 450000, img: "mahsolat/baremom.jpg" },
-    { id: 12, name: "عسل چهل گیاه ممتاز", price: 870000, img: "mahsolat/40giah.jpg" },
-    { id: 13, name: "ژله رویال ۲۰ گرمی", price: 480000, img: "mahsolat/royal20.jpg" },
-    { id: 14, name: "گرده گل ممتاز ۲ کیلویی", price: 1800000, img: "mahsolat/garde2.jpg" }
+    
 ];
 
         let cart = JSON.parse(localStorage.getItem('B_CART')) || [];
