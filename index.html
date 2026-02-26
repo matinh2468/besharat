@@ -1,318 +1,283 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
-<meta charset="utf-8">
-<title>فروشگاه عسل بشارت (هیر)</title>
-<meta name="viewport" content="width=device-width, initial-scale=0.5">
-<link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazir-font@v33.0.3/Vazirmatn.css" rel="stylesheet">
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
-<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-<style>
-:root{
---gold:#d4af37;
---dark:#222;
---light:#fff;
---bg:#f6f6f6;
---border:#e4e4e4;
---radius:16px;
---red:#e74c3c;
-}
-*{box-sizing:border-box;font-family:Vazirmatn,sans-serif}
-body{margin:0;background:var(--bg);color:var(--dark);font-size:19px;overflow-x:hidden;scroll-behavior:smooth}
+<meta charset="UTF-8">
+<title>عسل بشارت هیر</title>
 
-/* HEADER */
-header{position:sticky;top:0;z-index:1000;background:#fff;padding:10px 20px;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center}
-.brand{display:flex;align-items:center;gap:10px}
-.brand img{width:45px;height:45px;border-radius:10px}
-.brand h1{font-size:20px;color:var(--gold);margin:0}
-.top-nav a{margin:0 8px;text-decoration:none;color:#000;font-weight:600;font-size:16px}
-#cart-count{background:var(--gold);border-radius:50%;padding:4px 8px;font-size:13px;margin-right:5px}
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazir-font@v33.0.3/Vazirmatn.css" rel="stylesheet">
+
+<style>
+
+/* GENERAL */
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Vazirmatn,sans-serif;
+}
+
+body{
+background:#f6f6f6;
+scroll-behavior:smooth;
+}
+
+/* NAVBAR */
+
+nav{
+position:sticky;
+top:0;
+background:rgba(255,255,255,.95);
+backdrop-filter:blur(10px);
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:18px 35px;
+border-bottom:1px solid #eee;
+z-index:1000;
+}
+
+.menu a{
+text-decoration:none;
+margin:0 15px;
+color:#222;
+font-weight:600;
+transition:.3s;
+}
+
+.menu a:hover{
+color:#d4af37;
+}
 
 /* HERO */
-.hero{height:55vh;display:flex;align-items:center;justify-content:center;text-align:center;color:#fff;background:linear-gradient(rgba(0,0,0,.5),rgba(0,0,0,.5)),url('AKS99.jpg') center/cover no-repeat;border:5px solid rgb(212,175,55);border-radius:20px}
-.hero h2{font-size:44px}
-.hero p{font-size:22px}
 
-/* INFO BLOCK */
-.info-container{max-width:1100px;margin:50px auto;display:flex;flex-direction:column;gap:50px}
-.info-row{display:flex;flex-wrap:wrap;align-items:center;gap:30px;margin-bottom:50px}
-.info-row.reverse{flex-direction:row-reverse}
-.info-img{flex:1;min-width:250px;cursor:pointer;transition:.4s}
-.info-img img{width:100%;border-radius:20px;border:4px solid rgb(212,175,55);transition:.4s}
-.info-img img:hover{transform:scale(1.1);border:4px solid rgb(212,175,55)}
+.hero{
+height:70vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
+color:white;
 
-/* SECTION */
-.section{background:#fff;padding:40px 20px;border-radius:25px;max-width:1200px;margin:40px auto}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:20px}
-.card{background:#fff;border-radius:var(--radius);padding:15px;border:1px solid var(--border);text-align:center;transition:.3s}
-.card:hover{transform:translateY(-4px);box-shadow:0 6px 18px rgba(0,0,0,0.06)}
-.card img{width:100%;height:150px;object-fit:contain;border:4px solid rgb(212,175,55);border-radius:15px;transition:.4s}
-.card img:hover{transform:scale(1.1)}
-.price{font-size:20px;color:var(--gold);font-weight:bold}
-.btn{background:var(--gold);border:none;padding:10px;border-radius:10px;font-size:16px;cursor:pointer;margin-top:5px}
-.btn:hover{background:#c59b2d}
-.btn.soon{background:var(--red);cursor:not-allowed}
+background:
+linear-gradient(rgba(0,0,0,.6),rgba(0,0,0,.6)),
+url('AKS99.jpg') center/cover;
+
+border-bottom:6px solid #d4af37;
+}
+
+.hero h1{
+font-size:50px;
+}
+
+.hero p{
+font-size:22px;
+margin-top:15px;
+}
+
+/* ADS */
+
+.ads{
+max-width:800px;
+margin:70px auto;
+text-align:center;
+
+background:
+linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.55)),
+url('STOAKS/ho2.jpg') center/cover;
+
+padding:60px 30px;
+border-radius:35px;
+color:white;
+
+box-shadow:0 10px 40px rgba(0,0,0,.2);
+}
 
 /* GALLERY */
-.gallery-container{margin-bottom:40px}
-.gallery-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:15px}
-.gallery-item{border-radius:var(--radius);overflow:hidden;height:140px;border:3px solid rgb(212,175,55);box-shadow:0 4px 12px rgba(0,0,0,0.05);transition:.5s ease;transform-origin: top center;cursor:pointer}
-.gallery-item img{width:100%;height:100%;object-fit:cover;transition:.5s ease}
-.gallery-item:hover img{transform: scale(1.2) translateY(-10%);border:3px solid rgb(212,175,55)}
 
-/* MODAL */
-.modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);align-items:center;justify-content:center;z-index:3000;padding:15px}
-.modal-content{background:#fff;padding:25px;border-radius:20px;width:100%;max-width:500px}
-.cart-item{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--border)}
-.cart-controls button{margin:0 3px;padding:3px 6px;border:none;background:var(--gold);border-radius:6px;cursor:pointer}
+.gallery{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
+gap:15px;
+max-width:1100px;
+margin:auto;
+padding:40px 20px;
+}
 
-/* TOAST */
-#toast{position:fixed;top:60px;right:50%;transform:translateX(50%);background:var(--gold);padding:10px 18px;border-radius:10px;opacity:0;transition:.4s}
-#toast.show{opacity:1}
+.gallery img{
+width:100%;
+height:140px;
+object-fit:cover;
+border-radius:18px;
+border:3px solid #d4af37;
+cursor:pointer;
+transition:.4s;
+}
+
+.gallery img:hover{
+transform:scale(1.15);
+}
+
+/* MAP */
+
+.map{
+text-align:center;
+padding:60px 20px;
+}
+
+.map iframe{
+width:100%;
+max-width:900px;
+height:400px;
+border:none;
+border-radius:25px;
+}
 
 /* FOOTER */
-.main-footer{background:#111;color:#fff;padding:60px 20px;margin-top:50px;font-size:16px}
-.footer-container{max-width:1200px;margin:auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:25px}
-.footer-box h4{color:var(--gold);margin-bottom:10px;font-size:18px}
-.footer-box p, .footer-box li{font-size:16px;opacity:.9;line-height:1.6}
-.social-links a{display:inline-flex;width:40px;height:40px;background:#222;align-items:center;justify-content:center;border-radius:8px;margin-left:6px;transition:.3s;color:#fff}
-.social-links a:hover{background:var(--gold);color:#000}
+
+footer{
+background:#0f0f0f;
+color:white;
+padding:80px 20px;
+margin-top:80px;
+}
+
+.footer-grid{
+max-width:1200px;
+margin:auto;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:50px;
+}
+
+footer h3{
+color:#d4af37;
+margin-bottom:20px;
+}
+
+.bottom-text{
+text-align:center;
+margin-top:60px;
+border-top:1px solid #222;
+padding-top:30px;
+opacity:.8;
+}
+
 </style>
 </head>
+
 <body>
 
-<div id="toast">محصول اضافه شد ✅</div>
-
-<header>
-<div class="brand">
-<img src="لوگو.png" onerror="this.src='https://cdn-icons-png.flaticon.com/512/517/517563.png'">
-<h1>عسل بشارت</h1>
+<nav>
+<div style="display:flex;align-items:center;gap:10px">
+<img src="لوگو.png" style="width:45px;border-radius:10px">
+<h2>عسل بشارت</h2>
 </div>
 
-<div class="top-nav">
-<a href="#home-page">خانه</a>
-<a href="#products-section">محصولات</a>
-<a href="شروع_2.html">ارتباط با ما </a>
+<div class="menu">
+<a href="#">خانه</a>
+<a href="#gallery">گالری</a>
+<a href="#map">موقعیت</a>
+<a href="ma.html">محصولات</a>
 </div>
+</nav>
 
-<div onclick="openCart()" style="cursor:pointer">
-<i class="fas fa-shopping-basket fa-lg"></i>
-<span id="cart-count">۰</span>
-</div>
-</header>
+<section class="hero">
+<h1>شهد ناب کوهستان هیر</h1>
+<p>طبیعی | ارگانیک | مستقیم از زنبورستان</p>
+</section>
 
-<main id="home-page">
-<div class="hero" data-aos="zoom-in">
-<h2>شهد پاک کوهستان هیر</h2>
-<p>ارگانیک، طبیعی و مستقیم از زنبورستان بشارت</p>
-</div>
+<!-- ADS -->
 
-<!-- INFO BLOCKS -->
-<div class="info-container" data-aos="fade-up">
-<div class="info-row" data-aos="fade-left">
-<div style="flex:1;min-width:250px">
-<h2 style="color:var(--red)">عسل کاملاً طبیعی هیر</h2>
-<p style="line-height:2">منطقه هیر اردبیل به دلیل پوشش گیاهی غنی، یکی از بهترین مناطق برای تولید عسل در ایران است. ما اصالت و کیفیت محصولاتمان را تضمین می‌کنیم.</p>
-</div>
-<div style="flex:1;min-width:250px" class="info-img">
-<img src="STOAKS/ho2.jpg" onclick="showImage('STOAKS/ho2.jpg')" alt="عسل طبیعی">
-</div>
-</div>
-<div class="info-row reverse" data-aos="fade-right">
-<div style="flex:1;min-width:250px" class="info-img">
-<img src="STOAKS/ho1.jpg" onclick="showImage('STOAKS/ho3.jpg')" alt="خط تولید و برداشت عسل">
-</div>
-<div style="flex:1;min-width:250px">
-<h2 style="color:var(--red)">خط تولید و برداشت عسل</h2>
-<p style="line-height:2">عکس‌ها فرآیند برداشت و بسته‌بندی عسل را نشان می‌دهند. کیفیت و بهداشت محصولات برای ما اولویت است.</p>
-</div>
-</div>
-</div>
+<section class="ads">
+
+<h2 style="margin-bottom:20px">
+🛒 برای خرید عمده محصولات
+</h2>
+
+<p style="font-size:20px;line-height:2">
+📞 با شماره پشتیبانی تماس بگیرید  
+<br>
+<strong>0914549172</strong>
+</p>
+
+<br>
+
+<a href="ma.html" style="
+display:inline-block;
+padding:14px 35px;
+background:#d4af37;
+color:black;
+text-decoration:none;
+border-radius:18px;
+font-weight:600;
+">
+
+🛒 برو به محصولات
+
+</a>
+
+</section>
 
 <!-- GALLERY -->
-<div class="gallery-container" data-aos="fade-up">
-<h3><i class="fas fa-camera-retro" style="color:var(--gold)"></i> تصاویر زنبورستان و فروشگاه</h3>
-<div class="gallery-grid">
-<div class="gallery-item"><img src="STOAKS/AKS20.jpg"></div>
-<div class="gallery-item"><img src="STOAKS/AKS22.jpg"></div>
-<div class="gallery-item"><img src="STOAKS/AKS24.jpg"></div>
-<div class="gallery-item"><img src="STOAKS/AKS23.jpg"></div>
-<div class="gallery-item"><img src="STOAKS/AKS25.jpg"></div>
-<div class="gallery-item"><img src="STOAKS/AKS26.jpg"></div>
-</div>
+
+<section id="gallery">
+
+<h2 style="text-align:center;margin-bottom:25px">📸 تصاویر زنبورستان</h2>
+
+<div class="gallery">
+<img src="STOAKS/AKS20.jpg">
+<img src="STOAKS/AKS22.jpg">
+<img src="STOAKS/AKS24.jpg">
+<img src="STOAKS/AKS23.jpg">
+<img src="STOAKS/AKS25.jpg">
+<img src="STOAKS/AKS26.jpg">
 </div>
 
-<!-- PRODUCTS -->
-<div id="products-section" class="section">
-<h3><i class="fas fa-store"></i> ویترین فروشگاه</h3>
-<div id="products" class="grid"></div>
+</section>
+
+<!-- MAP -->
+
+<section class="map" id="map">
+<h2 style="margin-bottom:30px">📍 فروشگاه</h2>
+
+<iframe src="https://maps.google.com/maps?q=Hir%20Ardabil%20Iran&z=14&output=embed"></iframe>
+
+</section>
+
+<footer>
+
+<div class="footer-grid">
+
+<div>
+<h3>درباره عسل بشارت</h3>
+<p>تولیدکننده عسل طبیعی منطقه هیر اردبیل</p>
 </div>
 
-<!-- CART MODAL -->
-<div class="modal" id="cartModal">
-<div class="modal-content">
-<h3>سبد خرید شما</h3>
-<div id="cartItems"></div>
-<hr>
-<h4 id="cartTotal">جمع کل: ۰ تومان</h4>
-<button class="btn" onclick="sendOrder()">ارسال از طریق SMS</button>
-<button class="btn" style="background:#4CAF50;color:#fff" onclick="sendRubika()">ارسال به روبیکا</button>
-<button class="btn" style="background:#ccc" onclick="closeCart()">بستن</button>
-</div>
+<div>
+<h3>تماس با ما</h3>
+<p>📞 ۰۹۱۴۴۵۴۹۱۷۲</p>
+<p>👨‍💻 طراحی: متین هاشمی</p>
 </div>
 
-<!-- FOOTER -->
-<footer class="main-footer">
-<div class="footer-container">
-<div class="footer-box">
-<h4>عسل بشارت هیر</h4>
-<p>تولیدکننده تخصصی عسل طبیعی، ژل رویال و گرده گل. ما از سال ۱۳۸۰ در کنار شما هستیم.</p>
-<div class="social-links">
-<a href="https://t.me/+PW6YuUmeoAcwZDg0"><i class="fab fa-telegram-plane"></i></a>
-<a href="https://rubika.ir/besharathoney"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Rubika_logo.svg/1024px-Rubika_logo.svg.png" style="width:22px"></a>
-<a href="#"><i class="fab fa-instagram"></i></a>
+<div>
+<h3>خدمات</h3>
+<p>✔ عسل طبیعی</p>
+<p>✔ ارسال سریع</p>
+<p>✔ ضمانت کیفیت</p>
+<p>✔ پشتیبانی</p>
 </div>
+
 </div>
-<div class="footer-box">
-<h4>اطلاعات تماس</h4>
-<ul>
-<li>مدیریت: ۰۹۱۴۴۵۴۹۱۷۲</li>
-<li>اردبیل، شهر هیر، فروشگاه بشارت</li>
-  <li>ساخته شده توسط : متین هاشمی </li>
-</ul>
+
+<div class="bottom-text">
+© تمامی حقوق محفوظ است
 </div>
-<div class="footer-logo-big">
-<img src="namad.png" style="width:180px; border-radius:30px; border:3px solid #333;" onerror="this.src='https://cdn-icons-png.flaticon.com/512/517/517563.png'">
-</div>
-</div>
+
 </footer>
 
-
-
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<script>
-AOS.init({duration:1000,once:true});
-
-const products=[
-{id:1,name:"عسل طبیعی ۵۰۰ گرم",price:390000,img:"mahsolat/asaltabi.jpg"},
-{id:2,name:"شهد خالص ۱۰۰۰ گرم",price:890000,img:"mahsolat/ckales.jpg"},
-{id:3,name:"ژله رویال",price:250000,img:"mahsolat/AL.jpg"},
-{id:4,name:"عسل کنار ۵۰۰ گرم",price:450000,img:"mahsolat/kenar.jpg"},
-{id:5,name:"عسل آویشن ۵۰۰ گرم",price:470000,img:"mahsolat/avishan.jpg"},
-{id:6,name:"عسل گون ۵۰۰ گرم",price:420000,img:"mahsolat/gon.jpg"},
-{id:7,name:"عسل شبدر ۵۰۰ گرم",price:400000,img:"mahsolat/shabdar.jpg",soon:true},
-{id:8,name:"عسل بهارنارنج ۵۰۰ گرم",price:430000,img:"mahsolat/baharnarenj.jpg",soon:true},
-{id:9,name:"عسل کوهی ۵۰۰ گرم",price:460000,img:"mahsolat/kohi.jpg",soon:true},
-{id:10,name:"عسل یونجه ۵۰۰ گرم",price:440000,img:"mahsolat/yunje.jpg",soon:true}
-];
-
-let cart=JSON.parse(localStorage.getItem('B_CART'))||[];
-
-function renderProducts(){
-document.getElementById('products').innerHTML=
-products.map((p,i)=>`
-<div class="card" data-aos="fade-up">
-<img src="${p.img}">
-<h4>${p.name}</h4>
-<div class="price">${p.price.toLocaleString('fa-IR')} تومان</div>
-${
-p.soon ? `<button class="btn soon">به زودی</button>` 
-: `<button class="btn" onclick="addToCart(${p.id})">افزودن به سبد</button>`
-}
-</div>`).join('');
-updateBadge();
-}
-
-function addToCart(id){
-const p=products.find(x=>x.id===id);
-const item=cart.find(x=>x.id===id);
-item?item.qty++:cart.push({...p,qty:1});
-updateBadge();
-showToast(p.name+" به سبد اضافه شد ✅");
-}
-
-function updateBadge(){
-localStorage.setItem('B_CART',JSON.stringify(cart));
-document.getElementById('cart-count').innerText=
-cart.reduce((a,b)=>a+b.qty,0).toLocaleString('fa-IR');
-}
-
-function showToast(message){
-const t=document.getElementById('toast');
-t.innerText=message;
-t.className="show";
-setTimeout(()=>{t.className=t.className.replace("show","");},3000);
-}
-
-function openCart(){document.getElementById('cartModal').style.display="flex";renderCart();}
-function closeCart(){document.getElementById('cartModal').style.display="none"}
-
-function renderCart(){
-const c=document.getElementById('cartItems');
-if(cart.length===0){c.innerHTML="سبد خرید خالی است";return;}
-let total=0;c.innerHTML="";
-cart.forEach(item=>{
-total+=item.price*item.qty;
-c.innerHTML+=`
-<div class="cart-item">
-<div>${item.name} × ${item.qty}</div>
-<div class="cart-controls">
-<button onclick="changeQty(${item.id},1)">+</button>
-<button onclick="changeQty(${item.id},-1)">-</button>
-<button onclick="removeItem(${item.id})" style="background:red;color:#fff">حذف</button>
-</div>
-</div>`;});
-document.getElementById("cartTotal").innerText=
-"جمع کل: "+total.toLocaleString('fa-IR')+" تومان";
-}
-
-function changeQty(id,a){
-const i=cart.find(x=>x.id===id);
-if(!i)return;
-i.qty+=a;
-if(i.qty<=0)cart=cart.filter(x=>x.id!==id);
-updateBadge();renderCart();
-}
-
-function removeItem(id){cart=cart.filter(x=>x.id!==id);updateBadge();renderCart()}
-
-function invoice(){
-let t="سفارش جدید:\n\n";let total=0;
-cart.forEach(i=>{t+=`${i.name} × ${i.qty}\n`;total+=i.price*i.qty;});
-t+="\nجمع کل: "+total.toLocaleString('fa-IR')+" تومان";
-return t;
-}
-
-function sendOrder(){
-if(cart.length===0)return alert("سبد خالی است");
-if(!/Android|iPhone/i.test(navigator.userAgent))return alert("ارسال پیامک فقط در موبایل امکان‌پذیر است 📱");
-window.location.href=`sms:0914549172?body=${encodeURIComponent(invoice())}`;
-cart=[];updateBadge();closeCart();
-}
-
-function sendRubika(){
-window.open("https://rubika.ir/besharathoney?text="+encodeURIComponent(invoice()));
-cart=[];updateBadge();closeCart();
-}
-
-function showImage(src){
-const modal=document.createElement('div');
-modal.style.position='fixed';modal.style.inset='0';
-modal.style.background='rgba(0,0,0,0.8)';
-modal.style.display='flex';
-modal.style.alignItems='center';
-modal.style.justifyContent='center';
-modal.style.zIndex='5000';
-modal.onclick=()=>document.body.removeChild(modal);
-const img=document.createElement('img');img.src=src;
-img.style.maxWidth='90%';img.style.maxHeight='90%';
-img.style.borderRadius='20px';
-img.style.boxShadow='0 0 20px rgba(0,0,0,0.5)';
-modal.appendChild(img);
-document.body.appendChild(modal);
-}
-
-renderProducts();
-</script>
 </body>
 </html>
