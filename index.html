@@ -2,15 +2,12 @@
 <html lang="fa" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<title>عسل بشارت هیر</title>
+<title>عسل بشارت هیر | خرید عسل طبیعی</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
-<meta name="viewport" content="width=device-width, initial-scale=0.5">
-
-<link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazir-font@v33.0.3/Vazirmatn.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.0.3/Vazirmatn.css" rel="stylesheet">
 
 <style>
-
-/* GENERAL */
 
 *{
 margin:0;
@@ -24,8 +21,7 @@ background:#f6f6f6;
 scroll-behavior:smooth;
 }
 
-/* NAVBAR */
-
+/* NAV */
 nav{
 position:sticky;
 top:0;
@@ -52,52 +48,124 @@ color:#d4af37;
 }
 
 /* HERO */
-
 .hero{
-height:70vh;
+height:75vh;
 display:flex;
 flex-direction:column;
 justify-content:center;
 align-items:center;
 text-align:center;
 color:white;
-
 background:
 linear-gradient(rgba(0,0,0,.6),rgba(0,0,0,.6)),
 url('AKS99.jpg') center/cover;
-
 border-bottom:6px solid #d4af37;
+padding:20px;
 }
 
 .hero h1{
-font-size:50px;
+font-size:48px;
+margin-bottom:15px;
 }
 
 .hero p{
-font-size:22px;
-margin-top:15px;
+font-size:20px;
+margin-bottom:25px;
+}
+
+.btn{
+display:inline-block;
+padding:14px 35px;
+background:#d4af37;
+color:black;
+text-decoration:none;
+border-radius:25px;
+font-weight:600;
+transition:.3s;
+}
+
+.btn:hover{
+background:#c29b2f;
+}
+
+/* WHY US */
+.why{
+background:white;
+padding:70px 20px;
+text-align:center;
+}
+
+.why-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+gap:30px;
+max-width:1000px;
+margin:auto;
+margin-top:40px;
+}
+
+/* PRODUCTS */
+.products{
+padding:70px 20px;
+text-align:center;
+}
+
+.product-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:25px;
+max-width:1100px;
+margin:40px auto;
+}
+
+.card{
+background:white;
+padding:20px;
+border-radius:25px;
+box-shadow:0 10px 30px rgba(0,0,0,.08);
+transition:.3s;
+}
+
+.card:hover{
+transform:translateY(-10px);
+}
+
+.card img{
+width:100%;
+height:200px;
+object-fit:cover;
+border-radius:18px;
+margin-bottom:15px;
 }
 
 /* ADS */
-
 .ads{
-max-width:800px;
+max-width:900px;
 margin:70px auto;
 text-align:center;
-
 background:
-linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.55)),
+linear-gradient(rgba(0,0,0,.6),rgba(0,0,0,.6)),
 url('STOAKS/ho2.jpg') center/cover;
-
 padding:60px 30px;
 border-radius:35px;
 color:white;
+}
 
-box-shadow:0 10px 40px rgba(0,0,0,.2);
+/* TESTIMONIAL */
+.test{
+background:white;
+padding:70px 20px;
+text-align:center;
+}
+
+.test-grid{
+display:grid;
+gap:25px;
+max-width:900px;
+margin:40px auto;
 }
 
 /* GALLERY */
-
 .gallery{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
@@ -113,16 +181,14 @@ height:140px;
 object-fit:cover;
 border-radius:18px;
 border:3px solid #d4af37;
-cursor:pointer;
 transition:.4s;
 }
 
 .gallery img:hover{
-transform:scale(1.15);
+transform:scale(1.1);
 }
 
 /* MAP */
-
 .map{
 text-align:center;
 padding:60px 20px;
@@ -137,7 +203,6 @@ border-radius:25px;
 }
 
 /* FOOTER */
-
 footer{
 background:#0f0f0f;
 color:white;
@@ -172,62 +237,71 @@ opacity:.8;
 <body>
 
 <nav>
-<div style="display:flex;align-items:center;gap:10px">
-<img src="لوگو.png" style="width:45px;border-radius:10px">
 <h2>عسل بشارت</h2>
-</div>
-
 <div class="menu">
 <a href="#">خانه</a>
+<a href="ma.html">محصولات</a>
 <a href="#gallery">گالری</a>
 <a href="#map">موقعیت</a>
-<a href="ma.html">محصولات</a>
 </div>
 </nav>
 
 <section class="hero">
-<h1>شهد ناب کوهستان هیر</h1>
-<p>طبیعی | ارگانیک | مستقیم از زنبورستان</p>
+<h1>عسل طبیعی کوهستان هیر</h1>
+<p>برداشت مستقیم از زنبورستان | تضمین کیفیت | ارسال سریع</p>
+<a href="ma.html" class="btn">🛒 مشاهده محصولات</a>
 </section>
 
-<!-- ADS -->
+<section class="why">
+<h2>چرا عسل بشارت؟</h2>
+<div class="why-grid">
+<div>🍯 ۱۰۰٪ طبیعی و بدون شکر</div>
+<div>🚚 ارسال سریع به سراسر کشور</div>
+<div>✔ تضمین بازگشت وجه</div>
+</div>
+</section>
+
+<section class="products">
+<h2>پرفروش‌ترین محصولات</h2>
+<div class="product-grid">
+<div class="card">
+<img src="STOAKS/AKS20.jpg">
+<h3>عسل کوهستان</h3>
+<p>۱ کیلویی - طبیعی</p>
+</div>
+<div class="card">
+<img src="STOAKS/AKS22.jpg">
+<h3>عسل چندگیاه</h3>
+<p>۱ کیلویی - ویژه</p>
+</div>
+<div class="card">
+<img src="STOAKS/AKS24.jpg">
+<h3>عسل بهاره</h3>
+<p>۹۰۰ گرم - خالص</p>
+</div>
+</div>
+<a href="ma.html" class="btn">مشاهده همه محصولات</a>
+</section>
 
 <section class="ads">
-
-<h2 style="margin-bottom:20px">
-🛒 برای خرید عمده محصولات
-</h2>
-
-<p style="font-size:20px;line-height:2">
-📞 با شماره پشتیبانی تماس بگیرید  
+<h2>🛒 خرید عمده محصولات</h2>
+<p style="margin:20px 0;font-size:20px">
+📞 تماس با پشتیبانی  
 <br>
 <strong>0914549172</strong>
 </p>
-
-<br>
-
-<a href="ma.html" style="
-display:inline-block;
-padding:14px 35px;
-background:#d4af37;
-color:black;
-text-decoration:none;
-border-radius:18px;
-font-weight:600;
-">
-
-🛒 برو به محصولات
-
-</a>
-
 </section>
 
-<!-- GALLERY -->
+<section class="test">
+<h2>💬 نظرات مشتریان</h2>
+<div class="test-grid">
+<div>⭐⭐⭐⭐⭐ بهترین عسلی که خوردم 👌 – علی از اردبیل</div>
+<div>⭐⭐⭐⭐⭐ ارسال سریع و کیفیت عالی – سارا از تبریز</div>
+</div>
+</section>
 
 <section id="gallery">
-
 <h2 style="text-align:center;margin-bottom:25px">📸 تصاویر زنبورستان</h2>
-
 <div class="gallery">
 <img src="STOAKS/AKS20.jpg">
 <img src="STOAKS/AKS22.jpg">
@@ -236,48 +310,40 @@ font-weight:600;
 <img src="STOAKS/AKS25.jpg">
 <img src="STOAKS/AKS26.jpg">
 </div>
-
 </section>
 
-<!-- MAP -->
-
 <section class="map" id="map">
-<h2 style="margin-bottom:30px">📍 فروشگاه</h2>
-
+<h2 style="margin-bottom:30px">📍 موقعیت فروشگاه</h2>
 <iframe src="https://maps.google.com/maps?q=Hir%20Ardabil%20Iran&z=14&output=embed"></iframe>
-
 </section>
 
 <footer>
-
 <div class="footer-grid">
-
 <div>
-<h3>درباره عسل بشارت</h3>
+<h3>درباره ما</h3>
 <p>تولیدکننده عسل طبیعی منطقه هیر اردبیل</p>
 </div>
-
 <div>
 <h3>تماس با ما</h3>
 <p>📞 ۰۹۱۴۴۵۴۹۱۷۲</p>
 <p>👨‍💻 طراحی: متین هاشمی</p>
 </div>
-
 <div>
 <h3>خدمات</h3>
 <p>✔ عسل طبیعی</p>
 <p>✔ ارسال سریع</p>
 <p>✔ ضمانت کیفیت</p>
-<p>✔ پشتیبانی</p>
 </div>
-
 </div>
-
 <div class="bottom-text">
 © تمامی حقوق محفوظ است
 </div>
-
 </footer>
+
+<a href="https://wa.me/98914549172" target="_blank"
+style="position:fixed;bottom:25px;left:25px;background:#25D366;color:white;padding:15px 20px;border-radius:50px;text-decoration:none;font-weight:bold;">
+واتساپ سفارش
+</a>
 
 </body>
 </html>
