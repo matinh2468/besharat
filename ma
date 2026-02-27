@@ -15,15 +15,18 @@ font-family:Vazirmatn,sans-serif;
 box-sizing:border-box;
 }
 
-/* NAVBAR */
+body{
+background:#f6f6f6;
+}
+
+/* NAV */
 
 nav{
 display:flex;
 justify-content:space-between;
 align-items:center;
 padding:18px 35px;
-background:rgba(255,255,255,0.95);
-backdrop-filter:blur(10px);
+background:white;
 position:sticky;
 top:0;
 border-bottom:1px solid #eee;
@@ -33,13 +36,8 @@ z-index:1000;
 nav a{
 text-decoration:none;
 color:#222;
-font-weight:600;
 margin-left:20px;
-transition:.3s;
-}
-
-nav a:hover{
-color:#d4af37;
+font-weight:600;
 }
 
 /* PRODUCTS */
@@ -66,6 +64,14 @@ transition:.3s;
 transform:translateY(-5px);
 }
 
+.card img{
+width:100%;
+height:180px;
+object-fit:cover;
+border-radius:15px;
+margin-bottom:12px;
+}
+
 .card button{
 background:#d4af37;
 border:none;
@@ -76,7 +82,7 @@ cursor:pointer;
 font-weight:600;
 }
 
-/* CART BOX */
+/* CART */
 
 #cartBox{
 max-width:600px;
@@ -90,12 +96,25 @@ box-shadow:0 5px 25px rgba(0,0,0,.06);
 .cartItem{
 display:flex;
 justify-content:space-between;
-padding:10px 0;
+padding:12px 0;
 border-bottom:1px solid #eee;
+}
+
+.cartItem button{
+margin-left:5px;
 }
 
 .removeBtn{
 background:red;
+color:white;
+border:none;
+padding:5px 10px;
+border-radius:8px;
+cursor:pointer;
+}
+
+.qtyBtn{
+background:#4CAF50;
 color:white;
 border:none;
 padding:5px 10px;
@@ -124,7 +143,7 @@ font-size:16px;
 cursor:pointer;
 }
 
-/* SIDE TOAST */
+/* TOAST */
 
 .sideToast{
 position:fixed;
@@ -163,8 +182,6 @@ right:20px;
 
 <div class="products" id="products"></div>
 
-<hr>
-
 <div id="cartBox">
 
 <h2>🛍 سبد خرید</h2>
@@ -178,7 +195,7 @@ right:20px;
 <h3>📦 ثبت سفارش</h3>
 
 <input id="name" placeholder="نام و نام خانوادگی">
-<input id="phone" placeholder="شماره تماس (حداکثر 11 رقم)">
+<input id="phone" placeholder="شماره تماس (11 رقم)">
 <textarea id="address" placeholder="آدرس"></textarea>
 
 <label>📅 زمان ارسال</label>
@@ -207,19 +224,67 @@ right:20px;
 /* PRODUCTS */
 
 const products=[
-{name:"عسل طبیعی ۵۰۰ گرم",price:390000},
-{name:"شهد خالص ۱۰۰۰ گرم",price:890000},
-{name:"ژله رویال",price:250000},
-{name:"عسل کنار",price:450000},
-{name:"عسل آویشن",price:470000},
-{name:"عسل گون",price:420000},
-{name:"عسل شبدر",price:400000},
-{name:"عسل بهارنارنج",price:430000},
-{name:"عسل کوهی",price:460000},
-{name:"عسل یونجه",price:440000}
+{
+name:"عسل طبیعی ۵۰۰ گرم",
+price:390000,
+img:"STOAKS/AKS20.jpg"
+},
+{
+name:"شهد خالص ۱۰۰۰ گرم",
+price:890000,
+img:"STOAKS/AKS22.jpg"
+},
+{
+name:"ژله رویال",
+price:250000,
+img:"STOAKS/AKS24.jpg"
+},
+{
+name:"عسل کنار",
+price:450000,
+img:"STOAKS/AKS23.jpg"
+}
 ];
 
 let cart=[];
+
+/* ADD CART */
+
+function addCart(name,price){
+
+let exist=cart.find(p=>p.name===name);
+
+if(exist){
+exist.qty++;
+}
+else{
+cart.push({name,price,qty:1});
+}
+
+renderCart();
+showToast(name+" ➕ اضافه شد");
+
+}
+
+/* REMOVE */
+
+function removeCart(index){
+cart.splice(index,1);
+renderCart();
+}
+
+/* CHANGE QTY */
+
+function changeQty(index,amount){
+
+cart[index].qty+=amount;
+
+if(cart[index].qty<=0){
+cart.splice(index,1);
+}
+
+renderCart();
+}
 
 /* RENDER PRODUCTS */
 
@@ -231,7 +296,11 @@ products.forEach(p=>{
 
 html+=`
 <div class="card">
+
+<img src="${p.img}">
+
 <h4>${p.name}</h4>
+
 <p style="color:#d4af37;font-weight:bold">
 ${p.price.toLocaleString('fa-IR')} تومان
 </p>
@@ -239,6 +308,7 @@ ${p.price.toLocaleString('fa-IR')} تومان
 <button onclick="addCart('${p.name}',${p.price})">
 ➕ افزودن به سبد
 </button>
+
 </div>
 `;
 
@@ -247,15 +317,7 @@ ${p.price.toLocaleString('fa-IR')} تومان
 document.getElementById("products").innerHTML=html;
 }
 
-/* CART */
-
-function addCart(name,price){
-
-cart.push({name,price});
-renderCart();
-showToast(name+" ➕ اضافه شد");
-
-}
+/* CART RENDER */
 
 function renderCart(){
 
@@ -264,15 +326,26 @@ let total=0;
 
 cart.forEach((item,index)=>{
 
-total+=item.price;
+let price=item.price*item.qty;
+total+=price;
 
 html+=`
 <div class="cartItem">
-<span>${item.name} - ${item.price.toLocaleString('fa-IR')} تومان</span>
-<button class="removeBtn" onclick="removeCart(${index})">حذف</button>
+
+<span>
+${item.name} × ${item.qty}
+<br>
+${price.toLocaleString('fa-IR')} تومان
+</span>
+
+<div>
+<button class="qtyBtn" onclick="changeQty(${index},1)">➕</button>
+<button class="qtyBtn" onclick="changeQty(${index},-1)">➖</button>
+<button class="removeBtn" onclick="removeCart(${index})">❌</button>
+</div>
+
 </div>
 `;
-
 });
 
 document.getElementById("cartList").innerHTML=
@@ -281,13 +354,6 @@ html || "<p>سبد خرید خالی است</p>";
 document.getElementById("totalPrice").innerText=
 "جمع محصولات: "+total.toLocaleString('fa-IR')+" تومان";
 
-}
-
-/* REMOVE */
-
-function removeCart(index){
-cart.splice(index,1);
-renderCart();
 }
 
 /* TOAST */
@@ -308,13 +374,7 @@ toast.classList.remove("show");
 /* PHONE CHECK */
 
 function checkPhone(phone){
-
-if(phone.length>11){
-alert("⚠ شماره تماس نباید بیشتر از 11 رقم باشد");
-return false;
-}
-
-return true;
+return phone.length<=11;
 }
 
 /* RANDOM CODE */
@@ -335,44 +395,47 @@ return;
 let name=document.getElementById("name").value;
 let phone=document.getElementById("phone").value;
 let address=document.getElementById("address").value;
-let timePrice=parseInt(document.getElementById("sendTime").value);
 
 if(!name || !phone){
 alert("نام و شماره را وارد کنید");
 return;
 }
 
-if(!checkPhone(phone)) return;
+if(!checkPhone(phone)){
+alert("شماره نباید بیشتر از 11 رقم باشد");
+return;
+}
 
 let code=randomCode();
 
-let productTotal=0;
+let msg="\nکد پیگیری سفارش: "+code+"\n\n";
 
-let msg="سفارش عسل بشارت\n";
 msg+="نام: "+name+"\n";
 msg+="شماره: "+phone+"\n";
 msg+="آدرس: "+address+"\n\n";
 
+let productTotal=0;
+
 msg+="محصولات:\n";
 
 cart.forEach(p=>{
-msg+=p.name+" - "+p.price+" تومان\n";
-productTotal+=p.price;
+msg+=p.name+" - "+p.price+" تومان × "+p.qty+"\n";
+productTotal+=p.price*p.qty;
 });
 
-let totalPrice=productTotal + timePrice;
+let sendPrice=parseInt(document.getElementById("sendTime").value);
 
-msg+="\nهزینه ارسال: "+timePrice+" تومان";
+let totalPrice=productTotal+sendPrice;
+
+msg+="\nهزینه ارسال: "+sendPrice+" تومان";
 msg+="\nجمع کل: "+totalPrice.toLocaleString('fa-IR')+" تومان";
-
-msg+="\nکد پیگیری: "+code;
 
 msg+="\n\nتا 1 تا 5 ساعت آینده پاسخ داده می شود.";
 
 if(/Mobi|Android/i.test(navigator.userAgent)){
-window.location.href="sms:09144549172?body="+encodeURIComponent(msg);
+window.location.href="sms:0914549172?body="+encodeURIComponent(msg);
 }else{
-showToast("⚠ ارسال SMS فقط روی موبایل امکان پذیر است");
+alert("⚠ ارسال SMS فقط روی موبایل امکان پذیر است");
 }
 
 }
